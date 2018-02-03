@@ -16,7 +16,8 @@ public class UnitItemTest {
     public void testComputePrice() {
         UnitItem item = new UnitItem(1, "Baked Beans");
         PricesDatabase.getInstance().storePrice(1, 50);
-        assertEquals(50, item.computePrice());
+        PricedItem pricedItem = item.computePrice();
+        assertEquals(50, pricedItem.getPrice());
 
         PricesDatabase.getInstance().removePrice(1);
     }

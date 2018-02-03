@@ -17,7 +17,9 @@ public class ItemByWeightTest {
         ItemByWeight item = new ItemByWeight(0, "Apples", 0.2f);
 
         PricesDatabase.getInstance().storePrice(0, 220);
-        assertEquals(44, item.computePrice());
+        PricedItem pricedItem = item.computePrice();
+        assertEquals(44, pricedItem.getPrice());
+        assertEquals("Apples\n0.2kg @ £2.20/kg", pricedItem.getDescription());
 
         PricesDatabase.getInstance().removePrice(0);
     }

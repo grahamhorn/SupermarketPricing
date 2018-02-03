@@ -14,8 +14,8 @@ public class UnitItem extends Item {
     }
 
     @Override
-    public int computePrice() {
-        return PricesDatabase.getInstance().lookUpPrice(id);
+    public PricedItem computePrice() {
+        return new PricedItem(id, name+"\t\t", PricesDatabase.getInstance().lookUpPrice(id));
     }
 
 

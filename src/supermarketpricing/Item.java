@@ -24,5 +24,5 @@ public abstract class Item {
         return name;
     }
 
-    public abstract int computePrice();
+    public abstract PricedItem computePrice();
 }
