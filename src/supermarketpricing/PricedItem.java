@@ -3,7 +3,7 @@
  */
 package supermarketpricing;
 
-/**
+/** A PricedItem contains the id, the description to be shown on the receipt, and the price.
  *
  * @author gsh
  */
@@ -30,5 +30,7 @@ public class PricedItem {
         return price;
     }
 
-
+    public String toString() {
+        return id + " costs " + price + "p";
+    }
 }

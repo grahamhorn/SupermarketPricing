@@ -15,8 +15,8 @@ public class OfferNForM extends Offer{
     private int m;
 
     public OfferNForM(int id, String description, int n, int m) {
+        super(description);
         this.id = id;
-        this.description = description;
         this.n = n;
         this.m = m;
     }

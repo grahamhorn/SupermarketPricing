@@ -17,8 +17,8 @@ public class OfferNForX extends Offer {
     private int x;
 
     public OfferNForX(int id, String description, int n, int x) {
+        super(description);
         this.id = id;
-        this.description = description;
         this.n = n;
         this.x = x;
     }

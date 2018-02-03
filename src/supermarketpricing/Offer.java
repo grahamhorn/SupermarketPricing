@@ -16,6 +16,10 @@ public abstract class Offer {
 
     public abstract boolean isApplicable(int id);
 
+    protected Offer(String description) {
+        this.description = description;
+    }
+
     public String toString() {
         return description;
     }

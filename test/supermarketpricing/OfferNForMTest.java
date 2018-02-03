@@ -3,6 +3,8 @@
  */
 package supermarketpricing;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -35,5 +37,29 @@ public class OfferNForMTest {
 
         saving = offer.computeSaving(6, unitPrice);
         assertEquals(-100, saving.getSaving());
+    }
+
+     @Test
+    public void testComputeSavingUsingItemsList() {
+
+        OfferNForM offer = new OfferNForM(10, "Beans 3 For 2", 3, 2);
+
+        List<PricedItem> items = new ArrayList<>();
+        items.add(new PricedItem(10, "Beans", 50));
+        OfferSaving saving = offer.computeSaving(items);
+        assertEquals(0, saving.getSaving());
+
+        items.add(new PricedItem(10, "Beans", 50));
+        saving = offer.computeSaving(items);
+        assertEquals(0, saving.getSaving());
+
+        items.add(new PricedItem(10, "Beans", 50));
+        saving = offer.computeSaving(items);
+        assertEquals(-50, saving.getSaving());
+
+        items.add(new PricedItem(10, "Beans", 50));
+        saving = offer.computeSaving(items);
+        assertEquals(-50, saving.getSaving());
+
     }
 }
