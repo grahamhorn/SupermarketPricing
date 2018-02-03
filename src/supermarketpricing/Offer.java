@@ -7,6 +7,8 @@ package supermarketpricing;
  *
  * @author gsh
  */
-public class Offer {
+public abstract class Offer {
+    protected String description;
 
+    public abstract OfferSaving computeSaving(int numItems, int unitPrice);
 }
