@@ -32,12 +32,14 @@ Offers are stored in a central (singleton) OffersDatabase. When an Item is proce
 this is checked to see if there is an applicable offer. After all items have been processed
 then the set of offers is applied to calculate the discounts.
 
+See enhancements, below, for alternative representation choices - particularly the section about a possible Product class.
+
 ## Assumptions
 
 1. No checking is made that the Item ids are unique.
 2. Only one offer will apply to a given item at any time.
 3. Whilst a PriceNotFoundException has been created it is not caught in the computePrice methods
-of the Item subclasses - it is assumed that there is a price in the PricesDatabase for all ids found in the Basket.
+of the Item subclasses - it is assumed that there is a price in the PricesDatabase for all ids found in the Basket (see enhancements, below).
 4. For the Offer N from Set for X it is assumed that X is less than N times the price of the cheapest item in the set (i.e. 
 that the offer is always worthwhile). It is also assumed that the offer is applied by grouping the cheapest N items, and then
  the next cheapest N items, etc. It does not do any search to find the smallest/largest possible saving given the items purchased.
@@ -57,7 +59,7 @@ See BasketTest for examples.
 
 There are some Unit tests for the Offer and Item subclasses, Basket and PricesDatabase.
 
-## Possible extensions / changes
+## Enhancements: possible extensions / changes
 
 An expiry date could be added to items and offers generated that discount the
 price if the date is close. Use by and best before dates would be treated differently.
@@ -72,6 +74,9 @@ Add Coupons - money off on specific items.
 Item could be extended to hold more information, e.g. brand, dietary information -
 or this could be held in a Product class. A UnitItem could hold a Product and a ItemByWeight could hold a Product and a weight.
 
-The base price could be held in the Product class, removing the need for the PricesDatabase - assuming instead that
-there would be a ProductDatabase. The offer could also be stored in the Product class.
+The base price could be held in the Product class, removing the need for the PricesDatabase (and the possibility
+of a price not being found) - assuming instead that
+there would be a ProductDatabase providing a single point of access to modify prices. Similarly, the Offer could also be stored
+in the Product instance and the OffersDatabase could be removed (assuming that the ProductDatabase would have methods to make it easy to modify the current offers).
 There should only be one instance of each type of Product. A ProductFactory could be used to ensure that the ids are unique.
+
