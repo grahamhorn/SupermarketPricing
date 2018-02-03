@@ -3,6 +3,8 @@
  */
 package supermarketpricing;
 
+import java.util.List;
+
 /**
  *
  * @author gsh
@@ -10,5 +12,11 @@ package supermarketpricing;
 public abstract class Offer {
     protected String description;
 
-    public abstract OfferSaving computeSaving(int numItems, int unitPrice);
+    public abstract OfferSaving computeSaving(List<PricedItem> items);
+
+    public abstract boolean isApplicable(int id);
+
+    public String toString() {
+        return description;
+    }
 }

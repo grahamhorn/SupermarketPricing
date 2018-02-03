@@ -30,6 +30,10 @@ public class Receipt {
         total = 0;
     }
 
+    public List<PricedItem> getItems() {
+        return items;
+    }
+
     public void addItem(PricedItem item) {
         items.add(item);
         subtotal += item.getPrice();
@@ -64,7 +68,8 @@ public class Receipt {
 
         if (savings.size() > 0) {
             builder.append("\nSubtotal").append("\t\t").append(df.format(subtotal / 100.0));
-            builder.append("\nSavings");
+            builder.append("\n----------------------------");
+            builder.append("\nSavings\n");
 
             for (OfferSaving saving : savings) {
                 builder.append(saving.getDescription()).append("\t\t").append(df.format(saving.getSaving() / 100.0)).append("\n");
@@ -72,7 +77,7 @@ public class Receipt {
             builder.append("\nTotal Savings").append("\t\t").append(df.format(totalSavings / 100.0));
         }
         builder.append("\n\nTotal to pay").append("\t\t").append(df.format(total / 100.0));
-
+        builder.append("\n----------------------------\n");
         return builder.toString();
     }
 }
