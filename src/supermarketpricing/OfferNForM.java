@@ -6,7 +6,7 @@ package supermarketpricing;
 import java.util.List;
 
 /** Buy N items for the price of M.
- * Assumes the simplest form i.e. 2 for 1 rather than 4 for 2.
+ * 
  * @author gsh
  */
 public class OfferNForM extends Offer{
@@ -36,8 +36,8 @@ public class OfferNForM extends Offer{
     }
 
     public OfferSaving computeSaving(int numItems, int unitPrice) {
-        int numFree = numItems / n;
-        int saving = - numFree * unitPrice;
+        int offerMultiple = numItems / n;
+        int saving = - offerMultiple * (n - m) * unitPrice;
         return new OfferSaving(description, saving);
     }
 }
