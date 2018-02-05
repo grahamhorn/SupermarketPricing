@@ -13,7 +13,7 @@ line up for long item names or offer descriptions).
 
 Item is an abstract class with two concrete subclasses: UnitItem for items
 priced per unit (e.g. baked beans, coke) and ItemByWeight for items that have a
-price per kg. Each item has an id which should be unique (like a barcode).
+price per kg. Each item has an id which should be unique.
 
 The base price (in pence) for items is stored in a central (singleton) PricesDatabase. For items sold
 by weight this contains the price in pence per kg.
@@ -43,6 +43,7 @@ of the Item subclasses - it is assumed that there is a price in the PricesDataba
 4. For the Offer N from Set for X it is assumed that X is less than N times the price of the cheapest item in the set (i.e. 
 that the offer is always worthwhile). It is also assumed that the offer is applied by grouping the cheapest N items, and then
  the next cheapest N items, etc. It does not do any search to find the smallest/largest possible saving given the items purchased.
+5. Prices are in pence. There is no checking for negative or zero values when storing prices in the PricesDatabase.
 
 ## Usage
 
@@ -83,3 +84,11 @@ Add Coupons - money off on specific items.
 Some supermarkets offer a "brand guarantee" where the price of certain products is compared to other supermarkets. If implemented as
 an Offer this would break the assumption of only one offer per Item. Instead it would need to be implemented as a separate pass across the contents
 of the Basket, after the other offers have been applied.
+
+The supermarket would need to record the purchase data for analysis e.g. stock control, effectiveness of offers, etc.
+
+Some supermarkets have loyalty cards. If the customer has one then points would need to be calculated and added to the customer's account
+(as well as a record of the purchases made, vouchers used, etc).
+
+A supermarket receipt would also contain information about the date/time of the transaction, the store and checkout id (which would
+allow the supermarket to look up the operator (or self-checkout terminal), as well as messages from the store.
