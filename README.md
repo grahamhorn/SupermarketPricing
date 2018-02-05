@@ -61,16 +61,6 @@ There are some Unit tests for the Offer and Item subclasses, Basket and PricesDa
 
 ## Enhancements: possible extensions / changes
 
-An expiry date could be added to items and offers generated that discount the
-price if the date is close. Use by and best before dates would be treated differently.
-
-Other offer types such as "2 for £7.50 or 3 for £10" could be added. This should
-be treated as a single offer.
-
-The PriceNotFoundException should be caught and handled appropriately.
-
-Add Coupons - money off on specific items.
-
 Item could be extended to hold more information, e.g. brand, dietary information -
 or this could be held in a Product class. A UnitItem could hold a Product and a ItemByWeight could hold a Product and a weight.
 
@@ -80,3 +70,16 @@ there would be a ProductDatabase providing a single point of access to modify pr
 in the Product instance and the OffersDatabase could be removed (assuming that the ProductDatabase would have methods to make it easy to modify the current offers).
 There should only be one instance of each type of Product. A ProductFactory could be used to ensure that the ids are unique.
 
+An expiry date could be added to items and offers generated that discount the
+price if the date is close. Use by and best before dates would be treated differently.
+
+Other offer types such as "2 for £7.50 or 3 for £10" could be added. This should
+be treated as a single offer.
+
+The PriceNotFoundException should be caught and handled appropriately (unless the above changes mean it is no longer needed).
+
+Add Coupons - money off on specific items.
+
+Some supermarkets offer a "brand guarantee" where the price of certain products is compared to other supermarkets. If implemented as
+an Offer this would break the assumption of only one offer per Item. Instead it would need to be implemented as a separate pass across the contents
+of the Basket, after the other offers have been applied.
