@@ -44,6 +44,7 @@ of the Item subclasses - it is assumed that there is a price in the PricesDataba
 that the offer is always worthwhile). It is also assumed that the offer is applied by grouping the cheapest N items, and then
  the next cheapest N items, etc. It does not do any search to find the smallest/largest possible saving given the items purchased.
 5. Prices are in pence. There is no checking for negative or zero values when storing prices in the PricesDatabase.
+6. The saving from an offer is in pence and will be a negative value.
 
 ## Usage
 
