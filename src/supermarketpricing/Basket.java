@@ -25,6 +25,10 @@ public class Basket {
         items.add(item);
     }
 
+    /** Calculate the price the customer must pay for the items in the basket.
+     *
+     * @return a Receipt
+     */
     public Receipt calculate() {
         Receipt receipt = new Receipt();
 
