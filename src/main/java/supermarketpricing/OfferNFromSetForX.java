@@ -3,6 +3,7 @@
  */
 package supermarketpricing;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +27,7 @@ public class OfferNFromSetForX extends Offer {
 
     @Override
     public OfferSaving computeSaving(List<PricedItem> items) {
+        items = new ArrayList<PricedItem>(items);
         // Order list by descending price     
         items.sort((a, b) -> a.getPrice() > b.getPrice() ? -1 : a.getPrice() == b.getPrice() ? 0 : 1);
         
